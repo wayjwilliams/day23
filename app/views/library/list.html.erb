@@ -1,0 +1,29 @@
+<h1>Library#list</h1>
+
+<div class="pull-right">
+  <%= link_to "Check in a Book", checkin_path %>
+</div>
+
+<% @books.each do |book| %>
+  <li>
+    <strong><%= book.title %></strong> by
+    <em><%= book.author %></em>
+    <%= book.year %>.
+    <% if book.available? %>
+      <%= link_to "Checkout", checkout_path(book_id: book.id) %>
+    <% end %>
+  </li>
+<% end %>
+
+
+<% @patrons.each do |patron| %>
+  <h2><%= patron.name %></h2>
+  <p>Currently checked out:</p>
+  <% patron.checkouts.select {|checkout| checkout.checked_out?}.each do |checkout| %>
+    <li><%= checkout.book.title %></li>
+  <% end %>
+  <p>History of read books:</p>
+  <% patron.books.each do |book| %>
+    <li><%= book.title%> by <%= book.author %></li>
+  <% end %>
+<% end %>
