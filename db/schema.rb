@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20141023184928) do
   end
 
   create_table "checkouts", force: true do |t|
+    t.integer  "patron_id"
+    t.integer  "book_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -10,11 +10,8 @@ Steps:
 
 <% @checkouts.each do |checkout| %>
   <li>
-    <%= checkout.book.title %>.
-    Checked out by <%= checkout.patron.name %>
-    <%= distance_of_time_in_words checkout.checkout_at, Time.now %> ago.
-    <%= link_to "Checkin",
-    checkin_path(checkout_id: checkout.id),
-    method: :post, data: {confirm: "Check this book in?"} %>
+    <%= checkout.book.title %>. Checked out by <%= checkout.patron.name %> <%= distance_of_time_in_words checkout.checkout_at, Time.now %> ago.
+    <%= link_to "Checkin", checkin_path(checkout_id: checkout.id), method: :post, data: {confirm: "Check this book in?"} %>
+
   </li>
 <% end %>
