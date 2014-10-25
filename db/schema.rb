@@ -17,14 +17,17 @@ ActiveRecord::Schema.define(version: 20141023184928) do
     t.string   "title"
     t.string   "author"
     t.string   "year"
-    t.boolean  "available"
+    t.boolean  "available",  default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "checkouts", force: true do |t|
     t.integer  "patron_id"
-    t.integer  "book_id"
+    t.string   "book_id"
+    t.string   "integer"
+    t.datetime "checkout_at"
+    t.datetime "checkin_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

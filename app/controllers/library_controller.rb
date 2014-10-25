@@ -15,7 +15,7 @@ class LibraryController < ApplicationController
     @checkout = Checkout.new(params.require(:checkout).permit(:book_id, :patron_id))
     @checkout.checkout_at = DateTime.now
     if @checkout.save
-      @checkout.book.available = false
+      @checkout.book.update(availabe: false)
       @checkout.book.save
       redirect_to root_path, notice: "BOOM"
     else
